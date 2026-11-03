@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>網頁5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #3c4043;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+        .nav-link {
+            color: #5f6368 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 16px !important;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #1a73e8 !important;
+            background-color: #e8f0fe;
+        }
+        .resume-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .resume-title {
+            text-align: center;
+            color: #202124;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #1a73e8;
+            font-weight: 800;
+            display: inline-block;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #3c4043;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .form-control, .form-select {
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            padding: 12px 15px;
+            transition: all 0.2s;
+            width: 100%;
+            margin-left: 0;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1);
+            outline: none;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 5px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #5f6368;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #1a73e8;
+            width: 18px;
+            height: 18px;
+        }
+        .photo-upload {
+            border: 2px dashed #dadce0;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 16px;
+            margin: 0;
+            background: #f8f9fa;
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .photo-upload:hover {
+            border-color: #1a73e8;
+            background: #f1f3f4;
+        }
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #f1f3f4;
+        }
+        .btn {
+            padding: 12px 40px;
+            margin: 0 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-submit {
+            background: #1a73e8;
+            color: white;
+            border: none;
+        }
+        .btn-submit:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+        .btn-reset {
+            background: #f1f3f4;
+            color: #5f6368;
+            border: none;
+        }
+        .btn-reset:hover {
+            background: #e8eaed;
+            color: #202124;
+        }
+        .age-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            background-color: #1557b0;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body id="top">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="x/android.png" width="120px"></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1">
+                <ul class="navbar-nav me-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="link01.html">介紹</a></li>
+                    <li class="nav-item"><a class="nav-link" href="link02.html">理念</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">網頁</a>
+                        <div class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link1.html">Android 15</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link2.html">最新功能</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link3.html">Media</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link4.html">其他</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link5.html">成為Noogler</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3 mt-md-0">
+                    <input class="form-control me-2 rounded-pill border-0 bg-light px-3" type="search" placeholder="輸入景點" style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); width: auto;">
+                    <button class="btn btn-primary rounded-pill px-4" type="submit" style="background-color: #1a73e8; border: none; box-shadow: none;">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav> 
+    <div style="height: 80px;"></div>
+
+    <div class="container">
+        <div class="resume-container">
+            <h1 class="resume-title">成為 Noogler</h1>
+            <form>
+                <div class="row g-4">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label class="form-label">姓名</label>
+                                <input type="text" class="form-control" name="userName">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="form-label">性別</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="userGender" value="male" checked> 男</label>
+                                    <label><input type="radio" name="userGender" value="female"> 女</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label class="form-label">血型</label>
+                                <select name="userBlood" class="form-select">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="form-label">年齡</label>
+                                <input type="number" class="form-control" name="userAge">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">出生年月</label>
+                            <div class="age-inputs">
+                                <input type="text" class="form-control" name="userAgeYear" placeholder="年" style="flex: 2;">
+                                <select name="userAgeMonth" class="form-select" style="flex: 1;">
+                                    <option value="1">1月</option>
+                                    <option value="2">2月</option>
+                                    <option value="3">3月</option>
+                                    <option value="4">4月</option>
+                                    <option value="5">5月</option>
+                                    <option value="6">6月</option>
+                                    <option value="7">7月</option>
+                                    <option value="8">8月</option>
+                                    <option value="9">9月</option>
+                                    <option value="10">10月</option>
+                                    <option value="11">11月</option>
+                                    <option value="12">12月</option>
+                                </select>
+                                <input type="text" class="form-control" name="userAgeDay" placeholder="日" style="flex: 1;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="photo-upload">
+                            <p class="mb-3 text-secondary">新增個人大頭照</p>
+                            <input type="file" accept="image/*" class="form-control border-0 bg-transparent">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">身分字號</label>
+                        <input type="text" class="form-control" name="userID">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">電話號碼</label>
+                        <input type="tel" class="form-control" name="userPhoneNumber">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">通訊地址</label>
+                    <input type="text" class="form-control" name="userLocation">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">電子郵件</label>
+                    <input type="email" class="form-control" name="userMail">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">學歷</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="userSchool" value="elementary"> 小學</label>
+                        <label><input type="radio" name="userSchool" value="junior"> 國中</label>
+                        <label><input type="radio" name="userSchool" value="high"> 高中</label>
+                        <label><input type="radio" name="userSchool" value="university"> 大學</label>
+                        <label><input type="radio" name="userSchool" value="graduate"> 研究所</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">經歷</label>
+                    <textarea class="form-control" name="userExperience"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">語言能力</label>
+                        <input type="text" class="form-control" name="userLanguage">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">特殊技能</label>
+                        <input type="text" class="form-control" name="userSkills">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">期望待遇</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="userSalary" value="2w-3w"> 2w~3w</label>
+                        <label><input type="radio" name="userSalary" value="3w-35w"> 3w~3.5w</label>
+                        <label><input type="radio" name="userSalary" value="35w-4w"> 3.5w~4w</label>
+                        <label><input type="radio" name="userSalary" value="4w-45w"> 4w~4.5w</label>
+                        <label><input type="radio" name="userSalary" value="45w+"> 4.5w ↑</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">備註</label>
+                    <input type="text" class="form-control" name="userNote">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit">提交申請</button>
+                    <button type="reset" class="btn btn-reset">重設表單</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="#top" class="back-to-top">&#8679;</a>
+</body>
+</html>

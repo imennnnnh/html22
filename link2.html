@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>網頁2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+        .nav-link {
+            color: #5f6368 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 16px !important;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #1a73e8 !important;
+            background-color: #e8f0fe;
+        }
+        .container-title {
+            margin: 5rem 0 3rem;
+            text-align: center;
+        }
+        .container-title h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #202124;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .content-section {
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border: 1px solid rgba(0,0,0,0.01);
+        }
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+        .content-text {
+            flex: 1;
+        }
+        .content-text h8 {
+            color: #1a73e8;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .content-text h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #202124;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+        .content-text p {
+            color: #5f6368;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            background-color: white;
+            color: #1a73e8;
+            border: 2px solid #1a73e8;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1a73e8;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.2);
+        }
+        .content-media {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .content-media video,
+        .content-media img {
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .content-media video:hover,
+        .content-media img:hover {
+            transform: scale(1.03);
+        }
+        .content-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .card {
+            background: white;
+            border: none;
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .card-tag {
+            color: #34a853;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #202124;
+            margin-bottom: 1rem;
+        }
+        .card-description {
+            color: #5f6368;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .card-button {
+            color: #1a73e8;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .card-button:hover {
+            color: #1557b0;
+            transform: translateX(5px);
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: #fbbc04;
+            border-radius: 50%;
+            animation: move 3s ease-in-out infinite;
+            position: relative;
+            margin: 50px auto;
+            opacity: 0.8;
+        }
+        @keyframes move {
+            0%, 100% { transform: translateX(-100px); }
+            50% { transform: translateX(100px); }
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            background-color: #1557b0;
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .content-section,
+            .content-section:nth-child(even) {
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+            }
+            .content-media img, .content-media video {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="x/android.png" width="120px"></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1">
+                <ul class="navbar-nav me-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="link01.html">介紹</a></li>
+                    <li class="nav-item"><a class="nav-link" href="link02.html">理念</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">網頁</a>
+                        <div class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link1.html">Android 15</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link2.html">最新功能</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link3.html">Media</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link4.html">其他</a>
+                            <a class="dropdown-item rounded-3 px-3 py-2" href="link5.html">成為Noogler</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3 mt-md-0">
+                    <input class="form-control me-2 rounded-pill border-0 bg-light px-3" type="search" placeholder="輸入景點" style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
+                    <button class="btn btn-primary rounded-pill px-4" type="submit" style="background-color: #1a73e8; border: none;">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div style="height: 80px;"></div>
+
+    <div class="container container-title">
+        <h1 style="color: #ea4335;">連線能力</h1>
+    </div> 
+    
+    <div class="container">
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Wear OS</h8>
+                <h4>對話不中斷</h4>
+                <p>你可以在 Wear OS 智慧手錶上使用 WhatsApp，不必拿出手機，就能安全地收發訊息、接聽來電以及追蹤即時通訊。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/221.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Wear OS</h8>
+                <h4>透過手錶查看地點資訊</h4>
+                <p>在智慧手錶上尋找新地點、地點資訊和路線。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/222.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container container-title">
+        <h1 style="color: #4285f4;">Google 應用程式</h1>
+    </div> 
+    
+    <div class="container">
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Google 助理「資訊一覽」小工具</h8>
+                <h4>適時提供你需要的資訊</h4>
+                <p>內建 AI 技術的 Google 助理提供「資訊一覽」小工具，可在主畫面上適時顯示實用資訊，讓你取得精準的天氣快訊、動態旅遊最新消息和近期活動提醒。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/223.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Lookout</h8>
+                <h4>影像內容現在唾手可得</h4>
+                <p>圖片問與答功能會運用 AI 產生圖片說明，並回答你後續透過語音或打字輸入的問題，可用於所有圖片，包括社群媒體和你相片庫中的圖片。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/224.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Google 助理</h8>
+                <h4>滿滿朝氣開始每一天</h4>
+                <p>你現在可以聆聽個人日常安排的 Fitbit 或 Google Fit 資料，例如睡眠時數、睡眠開始時間和步數，掌握健康目標進度。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/225.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Gmail 中的翻譯功能</h8>
+                <h4>直接在 Gmail 行動應用程式中翻譯電子郵件</h4>
+                <p>如果 Gmail 偵測到你接收的電子郵件是以外國語文撰寫，就會提示你可以直接在行動應用程式中，將內容翻譯成慣用語言。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/226.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Google Meet</h8>
+                <h4>減少通話的干擾音訊</h4>
+                <p>透過簡化的行動裝置體驗，隨時隨地輕鬆接聽來電。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/227.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Google 相簿</h8>
+                <h4>集所有珍貴回憶於一處</h4>
+                <p>AI 收錄功能可幫你整理相片，讓你重溫過往特別的時刻。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <img src="x/228.jpg">
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-text">
+                <h8>YouTube Shorts</h8>
+                <h4>一起享受樂趣</h4>
+                <p>運用各種特效，為畫面中的人物或地點增添特色和風格。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <img src="x/229.jpg">
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Google 錢包</h8>
+                <h4>存取常用票證</h4>
+                <p>數位化並儲存常用票卡和票證，一機在手通行無阻。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/230.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-title">
+        <h1 style="color: #34a853;">安全防護</h1>
+    </div> 
+    
+    <div class="container">
+        <div class="content-section">
+            <div class="content-text">
+                <h8>不明追蹤器警示</h8>
+                <h4>隨時隨地保護自身安全</h4>
+                <p>當有陌生追蹤裝置 (例如藍牙追蹤器) 跟著你移動時，Android 系統現在可以自動偵測及發出通知，讓你找出並停用這些裝置。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/231.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-text">
+                <h8>Android 地震示警系統</h8>
+                <h4>地震預警</h4>
+                <p>收到地震示警即可快速做出因應，這項功能開放給超過 95 個國家/地區使用。</p>
+                <button class="btn btn-primary">了解更多</button>
+            </div>
+            <div class="content-media">
+                <video src="x/232.mp4" controls autoplay loop muted></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="box"></div>
+
+    <div class="container">
+        <div class="cards">
+            <div class="card">
+                <div class="card-tag">Android Auto</div>
+                <h2 class="card-title">在車內進行電話會議</h2>
+                <p class="card-description">你很快就能在車上使用適用於 Android Auto 的 Zoom 和 Cisco Webex，與親朋好友保持聯繫。</p>
+                <a href="#" class="card-button">立即試用 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">Google 訊息</div>
+                <h2 class="card-title">確保 RCS 即時通訊的隱私</h2>
+                <p class="card-description">現在包括群組通訊在內的所有訊息，都會經過端對端加密處理。</p>
+                <a href="#" class="card-button">立即下載 ↓</a>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">Wear OS</div>
+                <h2 class="card-title">不想打字，想要用語音嗎？</h2>
+                <p class="card-description">透過 Wear OS 智慧手錶輕鬆收發語音訊息。</p>
+                <a href="#" class="card-button">立即下載 ↓</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 text-muted border-top">
+        <div class="container">
+            <p class="mb-0">1. 本網站的部分內容可能會因應不同國家或地區而有所不同，可能無法提供所有國家或地區使用。</p>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top">&#8679;</a>
+</body>
+</html>
